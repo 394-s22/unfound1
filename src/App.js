@@ -5,57 +5,45 @@ import ColorLensIcon from '@mui/icons-material/ColorLens';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-
-
-      </header>
 
       <div class="results">
-        <h2>Results</h2>
-        <h3>You are...</h3>
-        <div class="results_icons">
+        <h1>Results</h1>
+        <h2>You are...</h2>
+        <div class="results-icons">
       
           <div class="result_div">
-          <svg data-testid="CoffeeIcon"></svg>
-            <p class="result_description">blurb</p>
+            <CoffeeIcon fontSize='large'/>
+            <h3 class="result_description"> blurb </h3>
+          </div>
+
+            <div class="result_div">
+              <ColorLensIcon fontSize='large'/>
+              <h3 class="result_description">blurb</h3>
             </div>
 
             <div class="result_div">
-            <svg data-testid="ColorLensIcon"></svg>
-            <p class="result_description">blurb</p>
+              <DarkModeIcon fontSize='large'/>
+              <h3 class="result_description">blurb</h3>
             </div>
 
             <div class="result_div">
-            <svg data-testid="DarkModeIcon"></svg>
-            <p class="result_description">blurb</p>
-            </div>
-
-            <div class="result_div">
-            <svg data-testid="RestaurantIcon"></svg>
-            <p class="result_description">blurb</p>
+            <RestaurantIcon fontSize='large'/>
+            <h3 class="result_description">blurb</h3>
             </div>
 
           </div>
 
-        
+        <div className='reccomendations'>
+        <h1> Unfound reccomendations for <RestaurantIcon/> </h1>
         </div>
+        {/* <div className='reccomendationPhotos' >
+
+        </div> */}
+
+        
+
     </div>
   );
 }
