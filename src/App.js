@@ -4,7 +4,7 @@ import bakery from './lostLarsonBakery.png';
 import './App.css';
 import { Button } from '@mui/material';
 
-const itemData= [{
+const itemData = [{
   img: kurimu
 },
 {
@@ -17,7 +17,7 @@ const itemData= [{
 function App() {
   return (
     <>
-      <Button halfWidth variant="contained" color="primary" href="/result">Take the quiz</Button>
+      <Button halfWidth variant="contained" color="primary" href="/question">Take the quiz</Button>
     </>
   )
 }
