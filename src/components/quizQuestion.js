@@ -24,14 +24,14 @@ const quiz = {
   }
 
 
-function QuizQuestion() {
+function QuizQuestion({question}) {
 
     return(
         <h1> Fake</h1>
     )
 }
 
-function QuizQuestionList() {
+function QuizQuestionList({quiz}) {
 
 }
 

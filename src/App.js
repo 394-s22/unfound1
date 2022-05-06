@@ -19,8 +19,11 @@ const itemData = [{
 function App() {
   return (
     <>
+    <div className="centered"> 
       <Button halfWidth variant="contained" color="primary" href="/question">Take the quiz</Button>
+      </div>
     </>
+    
   )
 }
 
