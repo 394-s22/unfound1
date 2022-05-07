@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {Card, CardContent, Stack, Typography }  from "@mui/material";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -23,11 +24,20 @@ function QuizQuestion({question}) {
 }
 
 function QuizAnswer ({answer}) {
+    const [value, setValue] = useState();
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+    
+
     return(
     <FormControl >
         <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            name="radio-buttons-group"
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={value}
+            onChange={handleChange}
         >
             <FormControlLabel value={answer} control={<Radio />} label={answer} />
         </RadioGroup>
