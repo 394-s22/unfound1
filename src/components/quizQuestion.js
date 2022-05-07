@@ -1,38 +1,49 @@
-
-const quiz = {
-    "I feel most energetic and focused:": 
-      [
-        "In the morning",
-        "During the afternoon and early evening",
-        "Late at night"
-      ],
-    "When I walk, I tend to do it:":
-      [
-        "Fairly fast, with long steps",
-        "Fairly fast, with small steps",
-        "Less fast, head up, looking the world in the face",
-        "Less fast, head down",
-        "Very slowly"
-      ],
-      "When you speak to people, you tend to:":
-      [
-        "Your knees bent, with your legs neatly side by side",
-        "Your legs crossed",
-        "Your legs stretched out or straight",
-        "One leg curled under you"
-      ]
-  }
-
+import {Card, CardContent, Stack, Typography }  from "@mui/material";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 function QuizQuestion({question}) {
 
     return(
-        <h1> Fake</h1>
+        <Card>
+        <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+            
+          Place Holder Question Name
+        </Typography>
+        {
+            Object.values(question).map(answer => <QuizAnswer answer={answer}/>)
+        }
+        </CardContent>
+        </Card>
+    )
+}
+
+function QuizAnswer ({answer}) {
+    return(
+    <FormControl >
+        <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            name="radio-buttons-group"
+        >
+            <FormControlLabel value={answer} control={<Radio />} label={answer} />
+        </RadioGroup>
+    </FormControl>
     )
 }
 
 function QuizQuestionList({quiz}) {
 
+    return(
+    <Stack spacing={2}>
+        {
+            Object.values(quiz).map(question => <QuizQuestion question={question}/> )
+        }
+    </Stack>
+    )
 }
 
 

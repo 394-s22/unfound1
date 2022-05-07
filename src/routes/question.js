@@ -1,29 +1,39 @@
 import '../App.css';
 import React from 'react';
 import { Button } from '@mui/material';
+import QuizQuestionList from '../components/quizQuestion';
 
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+
+const quiz = {
+    "I feel most energetic and focused:": 
+      [
+        "In the morning",
+        "During the afternoon and early evening",
+        "Late at night"
+      ],
+    "When I walk, I tend to do it:":
+      [
+        "Fairly fast, with long steps",
+        "Fairly fast, with small steps",
+        "Less fast, head up, looking the world in the face",
+        "Less fast, head down",
+        "Very slowly"
+      ],
+      "When you speak to people, you tend to:":
+      [
+        "Your knees bent, with your legs neatly side by side",
+        "Your legs crossed",
+        "Your legs stretched out or straight",
+        "One leg curled under you"
+      ]
+  }
 
 export default function Question() {
+    console.log(Object.values(quiz))
     return (
-        <div className='centered'>
-            <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-                <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group"
-                >
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
-                </RadioGroup>
-                <Button href="/result">Finish the quiz</Button>
-            </FormControl>
+        <div >
+            <QuizQuestionList quiz={quiz} />
+            <Button href="/result">Finish the quiz</Button>
         </div>
 
 
