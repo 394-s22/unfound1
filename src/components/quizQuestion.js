@@ -8,6 +8,7 @@ import FormLabel from '@mui/material/FormLabel';
 
 
 function QuizQuestion ({question, index}) {
+    
     return(
         <Card>
         <CardContent>
@@ -15,7 +16,7 @@ function QuizQuestion ({question, index}) {
             {question[0]}
         </Typography>
         {
-            QuizAnswer (question[1])
+            QuizAnswer (question[1],index)
             // Object.values(question[1]).map(answer => <QuizAnswer answer={answer}/>)
         }
         </CardContent>
@@ -23,23 +24,30 @@ function QuizQuestion ({question, index}) {
     )
 }
 
-function QuizAnswer (answers) {
-
+function QuizAnswer (answers, index) {
     const [value, setValue] = useState();
 
     const handleChange = (event) => {
         setValue(event.target.value);
       };
 
+    
 
+      /**
+       * Handle undefined value
+       *    If user forgets to answer a question, prompt user to answer said question (alert)
+       * 
+       * */
+      
 
     return(
     <FormControl >
         <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
             name="controlled-radio-buttons-group"
-            value={value ? value: "AnswerChoices"}
+            value={value ? value: "DummyValue"}
             onChange={handleChange}
+            id = {index}
         >
             {
                 Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['question']} control={<Radio />} label={ans['question']} /> )
@@ -50,6 +58,11 @@ function QuizAnswer (answers) {
 
 }
 
+const answerMatrix = Array(10).fill(null).map(() => Array(10).fill(0));
+
+function getAnswers (){
+    
+}
 
 
 function QuizQuestionList({quiz}) {
