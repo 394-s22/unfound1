@@ -31,11 +31,10 @@ const quiz = {
 export default function Question() {
     console.log(Object.values(quiz))
     return (
-        <div >
+        <div className='centered' >
+          <h1> Personality Quiz: </h1>
             <QuizQuestionList quiz={quiz} />
             <Button href="/result">Finish the quiz</Button>
         </div>
-
-
     );
 }

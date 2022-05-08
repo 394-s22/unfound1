@@ -20,6 +20,7 @@ function App() {
   return (
     <>
     <div className="centered"> 
+    <h1> Which Personality are you? </h1>
       <Button halfWidth variant="contained" color="primary" href="/question">Take the quiz</Button>
       </div>
     </>
