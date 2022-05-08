@@ -5,27 +5,27 @@ import QuizQuestionList from '../components/quizQuestion';
 
 
 const quiz = {
-    "I feel most energetic and focused:": 
+    "You're at the library. Which book do you check out?:": 
       [
-        "In the morning",
-        "During the afternoon and early evening",
-        "Late at night"
+        {"question": "Julia Child's cookbook 'Mastering the Art of French Cooking'", "category": "coffee"},
+        {"question": "F Scott Fitzgerald's Swanky 'The Great Gatsby'", "category": "drinks"},
+        {"question": "Karl Marx's 'The Communist Manifesto'", "category": "active"},
+        {"question": "You don't, you only like to read books you buy", "category": "history"},
       ],
-    "When I walk, I tend to do it:":
+    "You're stranded on an island and can choose only one of these to bring with you, which one do you choose?":
+    [
+      {"question": "A moka pot, to make coffee of course", "category": "night"},
+      {"question": "Your hiking boots, to enjoy the nature surrounding you", "category": "active"},
+      {"question": "Some charcoal and a notebook, why not capture the pretty scene", "category": "music"},
+      {"question": "An iPod and some headphones because music solves all problems", "category": "art"},
+    ],
+      "Your friend is hosting a dinner party. You bring:":
       [
-        "Fairly fast, with long steps",
-        "Fairly fast, with small steps",
-        "Less fast, head up, looking the world in the face",
-        "Less fast, head down",
-        "Very slowly"
+        {"question": "A fresh apple pie from your favorite bakery", "category": "coffee"},
+        {"question": "An interesting bottle of red wine", "category": "food"},
+        {"question": "A bouquet of peonies", "category": "nature"},
+        {"question": "A record of one of Maria Callas's opera performances", "category": "shopping"},
       ],
-      "When you speak to people, you tend to:":
-      [
-        "Your knees bent, with your legs neatly side by side",
-        "Your legs crossed",
-        "Your legs stretched out or straight",
-        "One leg curled under you"
-      ]
   }
 
 export default function Question() {

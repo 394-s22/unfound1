@@ -7,7 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 
-function QuizQuestion ({question, answers}) {
+function QuizQuestion ({question, index}) {
     return(
         <Card>
         <CardContent>
@@ -42,7 +42,7 @@ function QuizAnswer (answers) {
             onChange={handleChange}
         >
             {
-                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans} control={<Radio />} label={ans} /> )
+                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['question']} control={<Radio />} label={ans['question']} /> )
             }
         </RadioGroup>
     </FormControl>
@@ -57,7 +57,7 @@ function QuizQuestionList({quiz}) {
     return(
     <Stack spacing={2}>
         {
-            Object.entries(quiz).map((question, answers) => <QuizQuestion question={question} answers= {answers} /> )
+            Object.entries(quiz).map((question, index) => <QuizQuestion question={question} index= {index} /> )
         }
     </Stack>
     )
