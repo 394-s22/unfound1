@@ -25,33 +25,33 @@ export default function Result() {
   return (
     <div class="results">
       <h1>Results</h1>
-      <h2>You are...</h2>
+      <h2>Max, you are an introvert! </h2>
       <div class="results-icons">
 
         <div class="result_div">
           <CoffeeIcon fontSize='large' />
-          <h3 class="result_description"> blurb </h3>
+          <h3 class="result_description"> Coffee Shops! </h3>
         </div>
 
         <div class="result_div">
           <ColorLensIcon fontSize='large' />
-          <h3 class="result_description">blurb</h3>
+          <h3 class="result_description">Museums! </h3>
         </div>
 
         <div class="result_div">
           <DarkModeIcon fontSize='large' />
-          <h3 class="result_description">blurb</h3>
+          <h3 class="result_description">Quiet Nights!</h3>
         </div>
 
         <div class="result_div">
           <RestaurantIcon fontSize='large' />
-          <h3 class="result_description">blurb</h3>
+          <h3 class="result_description">Great Places to eat!</h3>
         </div>
 
       </div>
 
       <div>
-        <h1> Unfound recomendations for <RestaurantIcon /> </h1>
+        <h1> Unfound recomendations for Max: </h1>
         <Grid
           container
           spacing={0}
