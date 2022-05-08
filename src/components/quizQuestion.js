@@ -38,7 +38,7 @@ function QuizAnswer (answers) {
         <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
             name="controlled-radio-buttons-group"
-            value={value}
+            value={value ? value: "AnswerChoices"}
             onChange={handleChange}
         >
             {
