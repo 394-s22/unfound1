@@ -2,8 +2,14 @@ import '../App.css';
 import React from 'react';
 import { Button } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
+import getAnswers from '../components/quizQuestion';
+import answerMatrix from '../components/quizQuestion';
 
+function getSuggestions(){
+  console.log("");
 
+  //Need to implmiment
+}
 const quiz = {
     "You're at the library. Which book do you check out?:": 
       [
@@ -29,12 +35,16 @@ const quiz = {
   }
 
 export default function Question() {
-    console.log(Object.values(quiz))
+  console.log("answerMatrix");
+
+    console.log(answerMatrix);
+    console.log("answerMatrix2");
+
     return (
         <div className='centered' >
           <h1> Personality Quiz: </h1>
             <QuizQuestionList quiz={quiz} />
-            <Button href="/result">Finish the quiz</Button>
+            <Button onClick = {getSuggestions} >Finish the quiz</Button>
         </div>
     );
 }
