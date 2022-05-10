@@ -3,12 +3,23 @@ import React from 'react';
 import { Button } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
 import getAnswers from '../components/quizQuestion';
-import answerMatrix from '../components/quizQuestion';
+import {getAnswerMatrix} from '../components/quizQuestion';
 
 function getSuggestions(){
-  console.log("");
+  var userAnswers = getAnswerMatrix();
+  console.log(userAnswers);
+  for (var i = 0; i < 3; i++){
+    if (userAnswers[i].includes(1) == false){
+      alert("Some questions have not been filled out");
+      break;
+    }
+  }
+  //Add up
+  var colSum = userAnswers.reduce((a, b) => a.map((j, i) => j + b[i]));
+  console.log(colSum);
 
-  //Need to implmiment
+  //Make recomendations
+
 }
 const quiz = {
     "You're at the library. Which book do you check out?:": 
@@ -35,10 +46,10 @@ const quiz = {
   }
 
 export default function Question() {
-  console.log("answerMatrix");
+  // console.log("answerMatrix");
 
-    console.log(answerMatrix);
-    console.log("answerMatrix2");
+  //   console.log(answerMatrix);
+  //   console.log("answerMatrix2");
 
     return (
         <div className='centered' >

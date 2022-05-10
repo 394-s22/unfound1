@@ -65,7 +65,11 @@ function QuizAnswer (answers, index) {
 
 }
 
-export const answerMatrix = Array(10).fill(null).map(() => Array(10).fill(0));
+const answerMatrix = Array(10).fill(null).map(() => Array(10).fill(0));
+
+export function getAnswerMatrix(){
+    return answerMatrix;
+}
 
 function createAnswerMatrix (index, category){
     // const category = 'night';
