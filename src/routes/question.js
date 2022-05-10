@@ -55,7 +55,7 @@ export default function Question() {
         <div className='centered' >
           <h1> Personality Quiz: </h1>
             <QuizQuestionList quiz={quiz} />
-            <Button onClick = {getSuggestions} >Finish the quiz</Button>
+            <Button onClick = {getSuggestions} href="/result">Finish the quiz</Button>
         </div>
     );
 }
