@@ -4,11 +4,10 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-
 
 function QuizQuestion ({question, index}) {
     
+    // a("night");
     return(
         <Card>
         <CardContent>
@@ -19,17 +18,21 @@ function QuizQuestion ({question, index}) {
             QuizAnswer (question[1],index)
             // Object.values(question[1]).map(answer => <QuizAnswer answer={answer}/>)
         }
+        
         </CardContent>
         </Card>
     )
 }
 
 function QuizAnswer (answers, index) {
+   
     const [value, setValue] = useState();
-
     const handleChange = (event) => {
         setValue(event.target.value);
+
       };
+      createAnswerMatrix(index,value);
+
 
     
 
@@ -50,7 +53,7 @@ function QuizAnswer (answers, index) {
             id = {index}
         >
             {
-                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['question']} control={<Radio />} label={ans['question']} /> )
+                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />} label={ans['question']} /> )
             }
         </RadioGroup>
     </FormControl>
@@ -60,8 +63,32 @@ function QuizAnswer (answers, index) {
 
 const answerMatrix = Array(10).fill(null).map(() => Array(10).fill(0));
 
-function getAnswers (){
+export function getAnswerMatrix(){
+    return answerMatrix;
+}
+
+function createAnswerMatrix (index, category){
+    // const category = 'night';
+    const catToIndex = new Map();
+    // const row = 0;
+    const newArray = Array(10).fill(0);
+
+    catToIndex.set('coffee', 0);
+    catToIndex.set('food', 1);
+    catToIndex.set('drinks', 2);
+    catToIndex.set('night', 3);
+    catToIndex.set('active', 4);
+    catToIndex.set('nature', 5);
+    catToIndex.set('history', 6);
+    catToIndex.set('music', 7);
+    catToIndex.set('shopping', 8);
+    catToIndex.set('art', 9);
     
+    newArray[catToIndex.get(category)] = 1;
+    console.log(catToIndex.get(category));
+
+    answerMatrix[index] = newArray;
+    console.log(answerMatrix);
 }
 
 
@@ -75,6 +102,5 @@ function QuizQuestionList({quiz}) {
     </Stack>
     )
 }
-
 
 export default QuizQuestionList;

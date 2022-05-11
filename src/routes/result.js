@@ -59,7 +59,7 @@ export default function Result() {
           alignItems="center"
           justifyContent="center"
         >
-          <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+          <ImageList sx={{ width: '100%', height: 450, maxWidth: 500 }} cols={3} rowHeight={164}>
             {itemData.map((item) => (
               <ImageListItem key={item.img}>
                 <img

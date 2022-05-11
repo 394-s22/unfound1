@@ -2,8 +2,26 @@ import '../App.css';
 import React from 'react';
 import { Button } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
+import {getAnswerMatrix} from '../components/quizQuestion';
 
+function getSuggestions(){
+  var userAnswers = getAnswerMatrix();
+  console.log(userAnswers);
+  for (var i = 0; i < 3; i++){
+    if (userAnswers[i].includes(1) == false){
+      return alert("Some questions have not been filled out");
+    }
+  }
+  //Add up
+  var colSum = userAnswers.reduce((a, b) => a.map((j, i) => j + b[i]));
+  console.log(colSum);
 
+  //Make recomendations
+
+  //redirect to the result page
+  window.location.href = "/result";
+
+}
 const quiz = {
     "You're at the library. Which book do you check out?:": 
       [
@@ -29,12 +47,16 @@ const quiz = {
   }
 
 export default function Question() {
-    console.log(Object.values(quiz))
+  // console.log("answerMatrix");
+
+  //   console.log(answerMatrix);
+  //   console.log("answerMatrix2");
+
     return (
         <div className='centered' >
           <h1> Personality Quiz: </h1>
             <QuizQuestionList quiz={quiz} />
-            <Button href="/result">Finish the quiz</Button>
+            <Button onClick = {getSuggestions}>Finish the quiz</Button>
         </div>
     );
 }
