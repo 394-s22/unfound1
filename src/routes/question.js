@@ -4,9 +4,9 @@ import { Button } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
 import {getAnswerMatrix} from '../components/quizQuestion';
 
-function getSuggestions(){
+export function getSuggestions(){
   var userAnswers = getAnswerMatrix();
-  console.log(userAnswers);
+  console.log("userAnswers", userAnswers);
   for (var i = 0; i < 3; i++){
     if (userAnswers[i].includes(1) == false){
       return alert("Some questions have not been filled out");
@@ -56,7 +56,7 @@ export default function Question() {
         <div className='centered' >
           <h1> Personality Quiz: </h1>
             <QuizQuestionList quiz={quiz} />
-            <Button onClick = {getSuggestions}>Finish the quiz</Button>
+            {/* <Button onClick = {getSuggestions}>Finish the quiz</Button> */}
         </div>
     );
 }

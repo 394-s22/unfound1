@@ -4,10 +4,10 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import {getSuggestions} from '../routes/question';
 
-function QuizQuestion ({question, index}) {
-    
-    // a("night");
+function QuizQuestion ({question, index, setCurrentQuestionIndex}) {
+    console.log(index);
     return(
         <Card>
         <CardContent>
@@ -15,7 +15,7 @@ function QuizQuestion ({question, index}) {
             {question[0]}
         </Typography>
         {
-            QuizAnswer (question[1],index)
+            QuizAnswer (question[1], index, setCurrentQuestionIndex)
             // Object.values(question[1]).map(answer => <QuizAnswer answer={answer}/>)
         }
         
@@ -24,17 +24,17 @@ function QuizQuestion ({question, index}) {
     )
 }
 
-function QuizAnswer (answers, index) {
-   
+function QuizAnswer (answers, index, setCurrentQuestionIndex) {
     const [value, setValue] = useState();
     const handleChange = (event) => {
         setValue(event.target.value);
-
-      };
-      createAnswerMatrix(index,value);
-
-
-    
+        createAnswerMatrix(index,event.target.value);
+        if(index < 2){
+            setCurrentQuestionIndex(index+1);
+        }else{
+            getSuggestions()
+        }
+    };
 
       /**
        * Handle undefined value
@@ -68,6 +68,7 @@ export function getAnswerMatrix(){
 }
 
 function createAnswerMatrix (index, category){
+    console.log(index, category)
     // const category = 'night';
     const catToIndex = new Map();
     // const row = 0;
@@ -93,14 +94,17 @@ function createAnswerMatrix (index, category){
 
 
 function QuizQuestionList({quiz}) {
-
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    
     return(
     <Stack spacing={2}>
         {
-            Object.entries(quiz).map((question, index) => <QuizQuestion question={question} index= {index} /> )
+            <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index= {currentQuestionIndex} setCurrentQuestionIndex={setCurrentQuestionIndex} />
         }
     </Stack>
     )
 }
+
+
 
 export default QuizQuestionList;
