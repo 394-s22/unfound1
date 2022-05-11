@@ -5,6 +5,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import {getSuggestions} from '../routes/question';
+import { Button } from "@mui/material";
 
 function QuizQuestion ({question, index, setCurrentQuestionIndex}) {
     console.log(index);
@@ -28,13 +29,15 @@ function QuizAnswer (answers, index, setCurrentQuestionIndex) {
     const [value, setValue] = useState();
     const handleChange = (event) => {
         setValue(event.target.value);
-        createAnswerMatrix(index,event.target.value);
-        if(index < 2){
-            setCurrentQuestionIndex(index+1);
-        }else{
-            getSuggestions()
-        }
+        createAnswerMatrix(index, event.target.value);
+        // if(index < 2){
+        //     setCurrentQuestionIndex(index+1);
+        // }else{
+        //     getSuggestions()
+        // }
     };
+    
+    
 
       /**
        * Handle undefined value
@@ -95,12 +98,19 @@ function createAnswerMatrix (index, category){
 
 function QuizQuestionList({quiz}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    
+    const handleChange = () =>{
+    if(currentQuestionIndex < 2){
+            setCurrentQuestionIndex(currentQuestionIndex+1);
+        }else{
+            getSuggestions()
+        }
+    }
     return(
     <Stack spacing={2}>
         {
             <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index= {currentQuestionIndex} setCurrentQuestionIndex={setCurrentQuestionIndex} />
         }
+        <Button onClick={handleChange}> Next</Button>
     </Stack>
     )
 }
