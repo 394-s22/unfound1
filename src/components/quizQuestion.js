@@ -98,13 +98,20 @@ function createAnswerMatrix (index, category){
 
 function QuizQuestionList({quiz}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
     const handleChange = () =>{
+    
+    if (answerMatrix[currentQuestionIndex].includes(1) === false) {
+        return alert("Please select an answer to move on!!!");
+    }
     if(currentQuestionIndex < 2){
             setCurrentQuestionIndex(currentQuestionIndex+1);
         }else{
             getSuggestions()
         }
     }
+   
+
     return(
     <Stack spacing={2}>
         {
