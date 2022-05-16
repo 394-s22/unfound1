@@ -3,13 +3,10 @@ import React from 'react';
 import kurimu from '../kurimu.png';
 import tamale from '../eveliasTamales.png';
 import bakery from '../lostLarsonBakery.png';
-import CoffeeIcon from '@mui/icons-material/Coffee';
-import ColorLensIcon from '@mui/icons-material/ColorLens';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Grid from '@mui/material/Grid';
+
 
 const itemData = [{
   img: kurimu
@@ -21,6 +18,19 @@ const itemData = [{
   img: bakery
 }];
 
+function ResultIcon({ result_name }) {
+  return (
+    <div class="result_div">
+      <img src={"category_icons/" + result_name + ".svg"} class="result_icon" />
+      <h3 class="result_description"> {result_name + " blurb"} </h3>
+    </div>
+  )
+}
+
+/* calculate the results here, store the four results in array of categories */
+
+var results = ['coffee', 'shopping', 'night', 'dining']
+
 export default function Result() {
   return (
     <div class="results">
@@ -28,25 +38,9 @@ export default function Result() {
       <h2>Max, you are an introvert! </h2>
       <div class="results-icons">
 
-        <div class="result_div">
-          <CoffeeIcon fontSize='large' />
-          <h3 class="result_description"> Coffee Shops! </h3>
-        </div>
-
-        <div class="result_div">
-          <ColorLensIcon fontSize='large' />
-          <h3 class="result_description">Museums! </h3>
-        </div>
-
-        <div class="result_div">
-          <DarkModeIcon fontSize='large' />
-          <h3 class="result_description">Quiet Nights!</h3>
-        </div>
-
-        <div class="result_div">
-          <RestaurantIcon fontSize='large' />
-          <h3 class="result_description">Great Places to eat!</h3>
-        </div>
+        {
+          Object.values(results).map((result) => <ResultIcon result_name={result} />)
+        }
 
       </div>
 
