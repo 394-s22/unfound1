@@ -7,8 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import {getSuggestions} from '../routes/question';
 import { Button } from "@mui/material";
 
-function QuizQuestion ({question, index, setCurrentQuestionIndex}) {
-    console.log(index);
+function QuizQuestion ({question, index, value, setValue}) {
     return(
         <Card>
         <CardContent>
@@ -16,7 +15,7 @@ function QuizQuestion ({question, index, setCurrentQuestionIndex}) {
             {question[0]}
         </Typography>
         {
-            QuizAnswer (question[1], index, setCurrentQuestionIndex)
+            QuizAnswer (question[1], index, value, setValue)
             // Object.values(question[1]).map(answer => <QuizAnswer answer={answer}/>)
         }
         
@@ -25,16 +24,12 @@ function QuizQuestion ({question, index, setCurrentQuestionIndex}) {
     )
 }
 
-function QuizAnswer (answers, index, setCurrentQuestionIndex) {
-    const [value, setValue] = useState();
+function QuizAnswer (answers, index, value, setValue) {
+    // const [value, setValue] = useState();
+    console.log('value', value)
     const handleChange = (event) => {
         setValue(event.target.value);
         createAnswerMatrix(index, event.target.value);
-        // if(index < 2){
-        //     setCurrentQuestionIndex(index+1);
-        // }else{
-        //     getSuggestions()
-        // }
     };
     
     
@@ -98,9 +93,11 @@ function createAnswerMatrix (index, category){
 
 function QuizQuestionList({quiz}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [value, setValue] = useState();
     console.log("currentQuestionIndex", currentQuestionIndex)
 
     const handleChange = () =>{
+    setValue()
     
     if (answerMatrix[currentQuestionIndex].includes(1) === false) {
         return alert("Please select an answer to move on!!!");
@@ -116,7 +113,7 @@ function QuizQuestionList({quiz}) {
     return(
     <Stack spacing={2}>
         {
-            <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index= {currentQuestionIndex} setCurrentQuestionIndex={setCurrentQuestionIndex} />
+            <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index= {currentQuestionIndex} value={value} setValue={setValue} />
         }
         <Button onClick={handleChange}> Next</Button>
     </Stack>
