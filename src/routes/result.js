@@ -21,7 +21,7 @@ const itemData = [{
 function ResultIcon({ result_name }) {
   return (
     <div class="result_div">
-      <img src={"category_icons/" + result_name + ".svg"} class="result_icon" />
+      <img src={"category_icons/" + result_name + ".svg"} class="result_icon" alt='None'/>
       <h3 class="result_description"> {result_name + " blurb"} </h3>
     </div>
   )

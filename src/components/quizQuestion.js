@@ -6,10 +6,39 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import {getSuggestions} from '../routes/question';
 import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+
+const myTheme = createTheme({
+    // style radio button as button element
+    components: {
+      MuiFormControlLabel: {
+        styleOverrides: {
+          root: {
+            color: "#293264",
+            margin: "5px 15px 0 0",
+            // padding: "2px 8px",
+            width: "max-content",
+            borderStyle: "none",
+            border: "1px solid !important",
+            borderRadius: "13px!important",
+            "&.Mui-selected": {
+              backgroundColor: "#D6DBF5",
+              borderStyle: "none!important"
+            },
+            "&:hover": {
+              backgroundColor: "#D6DBF5"
+            }
+          }
+        }
+      }
+    }
+  });
+  
 
 function QuizQuestion ({question, index, value, setValue}) {
     return(
-        <Card>
+        <Card sx={{}}>
         <CardContent>
         <Typography gutterBottom variant="h5" component="div">
             {question[0]}
@@ -42,6 +71,7 @@ function QuizAnswer (answers, index, value, setValue) {
       
 
     return(
+    <ThemeProvider theme={myTheme}>
     <FormControl >
         <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
@@ -51,10 +81,14 @@ function QuizAnswer (answers, index, value, setValue) {
             id = {index}
         >
             {
-                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />} label={ans['question']} /> )
+                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />} label={ans['question']} 
+                sx={{
+                    color: 'success'
+                }}/> )
             }
         </RadioGroup>
     </FormControl>
+    </ThemeProvider>
     )
 
 }
@@ -111,12 +145,14 @@ function QuizQuestionList({quiz}) {
    
 
     return(
+ 
     <Stack spacing={2}>
         {
             <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index= {currentQuestionIndex} value={value} setValue={setValue} />
         }
         <Button onClick={handleChange}> Next</Button>
     </Stack>
+ 
     )
 }
 
