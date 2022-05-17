@@ -39,7 +39,7 @@ const myTheme = createTheme({
 function QuizQuestion ({question, index, value, setValue}) {
     return(
         <Card sx={{backgroundColor:"transparent"}}>
-        <CardContent sx={{alignItems:"center"}}>
+        <CardContent >
         <Typography gutterBottom variant="h5" component="div">
             {question[0]}
         </Typography>
