@@ -29,9 +29,13 @@ function ResultIcon({ result_name }) {
 
 /* calculate the results here, store the four results in array of categories */
 
-var results = ['coffee', 'shopping', 'night', 'dining']
+// var results = ['coffee', 'shopping', 'night', 'dining']
 
 export default function Result() {
+  const queryParams = new URLSearchParams(window.location.search);
+  const results = queryParams.get('resultCat').split(","); 
+  
+  console.log("results", results)
   return (
     <div class="results">
       <h1>Results</h1>
