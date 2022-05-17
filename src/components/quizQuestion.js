@@ -15,20 +15,20 @@ const myTheme = createTheme({
       MuiFormControlLabel: {
         styleOverrides: {
           root: {
-            color: "#293264",
+            color: "black",
             margin: "5px 15px 0 0",
-            // padding: "2px 8px",
-            width: "max-content",
+            width: "100%",
             borderStyle: "none",
             border: "1px solid !important",
             borderRadius: "13px!important",
+            // alignItems: "center",
             "&.Mui-selected": {
               backgroundColor: "#D6DBF5",
               borderStyle: "none!important"
             },
             "&:hover": {
               backgroundColor: "#D6DBF5"
-            }
+            },
           }
         }
       }
@@ -38,8 +38,8 @@ const myTheme = createTheme({
 
 function QuizQuestion ({question, index, value, setValue}) {
     return(
-        <Card sx={{}}>
-        <CardContent>
+        <Card sx={{backgroundColor:"transparent"}}>
+        <CardContent sx={{alignItems:"center"}}>
         <Typography gutterBottom variant="h5" component="div">
             {question[0]}
         </Typography>
