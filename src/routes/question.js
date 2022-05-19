@@ -1,8 +1,18 @@
 import '../App.css';
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
 import { getAnswerMatrix } from '../components/quizQuestion';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const myTheme = createTheme({
+  typography: {
+      fontFamily: [
+        'IBM Plex Mono',
+        'Cosmic Octo Heavy'
+      ].join(','),
+    },
+});
 
 
 const categories = ['coffee', 'food', 'drinks', 'night', 'active', 'nature', 'history', 'music', 'shopping', 'art']
@@ -108,10 +118,15 @@ export default function Question() {
   //   console.log("answerMatrix2");
 
   return (
-    <div className='centered' >
-      <h1> Personality Quiz: </h1>
+    <div  className='quizQuestions'>
+      <ThemeProvider theme={myTheme}>
+
+      <Typography variant='h3' sx={{color:"black", padding:5, }}>
+         Quiz Questions
+       </Typography>
       <QuizQuestionList quiz={quiz} />
-      {/* <Button onClick = {getSuggestions}>Finish the quiz</Button> */}
+      </ThemeProvider>
+
     </div>
   );
 }

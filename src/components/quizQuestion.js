@@ -6,21 +6,60 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import {getSuggestions} from '../routes/question';
 import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+
+
+
+const myTheme = createTheme({
+    typography: {
+        fontFamily: [
+          'IBM Plex Mono',
+          'Cosmic Octo Heavy'
+        ].join(','),
+      },
+    // style radio button as button element
+    components: {
+      MuiFormControlLabel: {
+        styleOverrides: {
+          root: {
+            color: "black",
+            margin: "5px 15px 0 0",
+            minWidth: "100%",
+            borderStyle: "none",
+            border: "1px solid !important",
+            borderRadius: "13px!important",
+            "&.Mui-selected": {
+              backgroundColor: "#D6DBF5",
+              borderStyle: "none!important"
+            },
+            "&:hover": {
+              backgroundColor: "#D6DBF5"
+            },
+            "&:user-select": {
+                backgroundColor: "#D6DBF5"
+            }
+          }
+        }
+      }
+    }
+  });
+  
 
 function QuizQuestion ({question, index, value, setValue}) {
     return(
-        <Card>
-        <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Box sx={{display: "flex", flexDirection:"column", alignItems:"center", textAlign:"center"}}>
+        <CardContent >
+        <Typography gutterBottom variant="h4" component="div" >
             {question[0]}
         </Typography>
         {
             QuizAnswer (question[1], index, value, setValue)
-            // Object.values(question[1]).map(answer => <QuizAnswer answer={answer}/>)
         }
-        
         </CardContent>
-        </Card>
+        </Box>
+      
+        
     )
 }
 
@@ -31,17 +70,10 @@ function QuizAnswer (answers, index, value, setValue) {
         setValue(event.target.value);
         createAnswerMatrix(index, event.target.value);
     };
-    
-    
-
-      /**
-       * Handle undefined value
-       *    If user forgets to answer a question, prompt user to answer said question (alert)
-       * 
-       * */
       
 
     return(
+    <ThemeProvider theme={myTheme}>
     <FormControl >
         <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
@@ -51,10 +83,14 @@ function QuizAnswer (answers, index, value, setValue) {
             id = {index}
         >
             {
-                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />} label={ans['question']} /> )
+                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />} label={ans['question']} 
+                sx={{
+                    color: 'success'
+                }}/> )
             }
         </RadioGroup>
     </FormControl>
+    </ThemeProvider>
     )
 
 }
@@ -111,12 +147,14 @@ function QuizQuestionList({quiz}) {
    
 
     return(
+ 
     <Stack spacing={2}>
         {
             <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index= {currentQuestionIndex} value={value} setValue={setValue} />
         }
         <Button onClick={handleChange}> Next</Button>
     </Stack>
+ 
     )
 }
 
