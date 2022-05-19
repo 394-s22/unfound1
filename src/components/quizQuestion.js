@@ -50,7 +50,7 @@ function QuizQuestion ({question, index, value, setValue}) {
     return(
         <Box sx={{display: "flex", flexDirection:"column", alignItems:"center", textAlign:"center"}}>
         <CardContent >
-        <Typography gutterBottom variant="h5" component="div" >
+        <Typography gutterBottom variant="h4" component="div" >
             {question[0]}
         </Typography>
         {
