@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import {getSuggestions} from '../routes/question';
 import { Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Box from '@mui/material/Box';
 
 
 const myTheme = createTheme({
@@ -29,6 +30,9 @@ const myTheme = createTheme({
             "&:hover": {
               backgroundColor: "#D6DBF5"
             },
+            "&:user-select": {
+                backgroundColor: "#D6DBF5"
+            }
           }
         }
       }
@@ -39,17 +43,18 @@ const myTheme = createTheme({
 function QuizQuestion ({question, index, value, setValue}) {
     return(
         <Card sx={{backgroundColor:"transparent"}}>
+        <Box sx={{display: "flex", flexDirection:"column", alignItems:"center", textAlign:"center"}}>
         <CardContent >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" >
             {question[0]}
         </Typography>
         {
             QuizAnswer (question[1], index, value, setValue)
-            // Object.values(question[1]).map(answer => <QuizAnswer answer={answer}/>)
         }
-        
         </CardContent>
+        </Box>
         </Card>
+        
     )
 }
 
