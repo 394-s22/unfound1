@@ -6,6 +6,8 @@ import bakery from '../lostLarsonBakery.png';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Grid from '@mui/material/Grid';
+import { ref, listAll, getDownloadURL } from 'firebase/storage';
+import { storage, firebase } from '../utilities/firebase.js';
 
 
 const itemData = [{
@@ -34,6 +36,18 @@ function ResultIcon({ result_name }) {
 export default function Result() {
   const queryParams = new URLSearchParams(window.location.search);
   const results = queryParams.get('resultCat').split(","); 
+  var storageRef = firebase.storage().ref("");
+
+  storageRef.listAll().then(function(result) {
+    // result.items.forEach(function(imageRef) {
+    //   // And finally display them
+    //   console.log()
+    // });
+    console.log(result);
+  }).catch(function(error) {
+    // Handle any errors
+  });
+
   
   console.log("results", results)
   return (
