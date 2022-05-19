@@ -42,19 +42,37 @@ export default function Result() {
   const listRef = ref(storage);
   const postResult = [[results[0]], [results[0], results[2]], [results[1], results[3]]]
 
+
   postResult.forEach(suggestion => {
     listAll(listRef)
       .then((res) => {
         res.items.forEach((itemRef) => {
           var flag = true
-          suggestion.forEach(cat => {
-            if (!itemRef._location.path.includes(cat)) {
-              flag = false
-            }
-          })
-          if(flag === true){
+          var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
+          if(isEvery){
+            // console.log(suggestion);
+            // console.log(itemRef._location.path);
             itemData.push({img: getDownloadURL(itemRef)})
+            // console.log(itemData);
+
           }
+
+          // suggestion.forEach(cat => {
+
+          //   console.log("suggestion");
+          //   console.log(suggestion);
+          //   console.log("itemRef._location.path");
+          //   console.log(itemRef._location.path);
+
+          //   if (!itemRef._location.path.includes(cat)) {
+          //     flag = false
+          //   }
+          // })
+          // if(flag === true){
+          //   itemData.push({img: getDownloadURL(itemRef)})
+          // }
+
+
           // All the items under listRef.
         });
       }).catch((error) => {
@@ -63,7 +81,8 @@ export default function Result() {
   }
   )
 
-  console.log("itemData", itemData)
+  console.log("itemData img", itemData[0]);
+  console.log("itemData");
 
 
 
