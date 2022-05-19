@@ -20,7 +20,7 @@ import { storage, firebase, storageRef } from '../utilities/firebase.js';
 //   img: bakery
 // }];
 
-const itemData = [];
+var itemData = ["", "", ""];
 
 function ResultIcon({ result_name }) {
   return (
@@ -43,37 +43,31 @@ export default function Result() {
   const postResult = [[results[0]], [results[0], results[2]], [results[1], results[3]]]
 
 
-  postResult.forEach(suggestion => {
+
+  postResult.forEach((suggestion, index) => {
     listAll(listRef)
       .then((res) => {
         res.items.forEach((itemRef) => {
-          var flag = true
-          var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
-          if(isEvery){
-            // console.log(suggestion);
-            // console.log(itemRef._location.path);
-            itemData.push({img: getDownloadURL(itemRef)})
-            // console.log(itemData);
-
+          if (suggestion.length === 1) {
+            if (itemRef._location.path === suggestion[0] + ".png") {
+              getDownloadURL(itemRef).then((url) => {
+                // itemData.push(url)
+                itemData[index] = url
+              })
+            }
+          } else {
+            var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
+            if (isEvery) {
+              // console.log(suggestion);
+              // console.log(itemRef._location.path);
+              getDownloadURL(itemRef).then((url) => {
+                // itemData.push(url)
+                itemData[index] = url
+              })
+            }
           }
+          // console.log(itemData);
 
-          // suggestion.forEach(cat => {
-
-          //   console.log("suggestion");
-          //   console.log(suggestion);
-          //   console.log("itemRef._location.path");
-          //   console.log(itemRef._location.path);
-
-          //   if (!itemRef._location.path.includes(cat)) {
-          //     flag = false
-          //   }
-          // })
-          // if(flag === true){
-          //   itemData.push({img: getDownloadURL(itemRef)})
-          // }
-
-
-          // All the items under listRef.
         });
       }).catch((error) => {
         // Uh-oh, an error occurred!
@@ -81,13 +75,9 @@ export default function Result() {
   }
   )
 
-  console.log("itemData img", itemData[0]);
-  console.log("itemData");
-
-
-
-
-
+//error: itemData[0] is undefined
+console.log(itemData);
+console.log(itemData[0]);
 
   console.log("results", results)
   return (
