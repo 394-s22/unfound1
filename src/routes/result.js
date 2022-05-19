@@ -1,5 +1,5 @@
 import '../App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import kurimu from '../kurimu.png';
 import tamale from '../eveliasTamales.png';
 import bakery from '../lostLarsonBakery.png';
@@ -40,8 +40,8 @@ export default function Result() {
   const results = queryParams.get('resultCat').split(",");
 
   const listRef = ref(storage);
-  const postResult = [[results[0]], [results[0], results[2]], [results[1], results[3]]]
-
+  const postResult = [[results[0]], [results[0], results[2]], [results[1], results[3]]];
+  const [urls, setUrls] = useState([]);
 
 
   postResult.forEach((suggestion, index) => {
@@ -52,17 +52,29 @@ export default function Result() {
             if (itemRef._location.path === suggestion[0] + ".png") {
               getDownloadURL(itemRef).then((url) => {
                 // itemData.push(url)
-                itemData[index] = url
+                // itemData[index] = url
+                // setUrls([...urls, { url: url }]);
+                if(urls.indexOf(url) == -1){
+                  // setUrls([...urls, url]);
+                  // const test = urls.push(url)
+                  const newArray = urls.concat([url])
+                  setUrls(newArray);
+                }
               })
             }
           } else {
             var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
             if (isEvery) {
-              // console.log(suggestion);
+              console.log(suggestion);
               // console.log(itemRef._location.path);
               getDownloadURL(itemRef).then((url) => {
                 // itemData.push(url)
-                itemData[index] = url
+                // itemData[index] = url
+                // setUrls([...urls, { img: url }]);
+                if(urls.indexOf(url) == -1){
+                  const newArray = urls.concat([url])
+                  setUrls(newArray);
+                }
               })
             }
           }
@@ -75,10 +87,7 @@ export default function Result() {
   }
   )
 
-//error: itemData[0] is undefined
-console.log(itemData);
-console.log(itemData[0]);
-
+  console.log(urls)
   console.log("results", results)
   return (
     <div class="results">
@@ -102,12 +111,12 @@ console.log(itemData[0]);
           justifyContent="center"
         >
           <ImageList sx={{ width: '100%', height: 450, maxWidth: 500 }} cols={3} rowHeight={164}>
-            {itemData.map((item) => (
-              <ImageListItem key={item.img}>
+            {urls.map((item) => (
+              <ImageListItem key={item}>
                 <img
-                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                  srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
+                  src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                  srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item}
                   loading="lazy"
                 />
               </ImageListItem>
