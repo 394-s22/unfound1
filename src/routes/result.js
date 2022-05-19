@@ -7,23 +7,25 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Grid from '@mui/material/Grid';
 import { ref, listAll, getDownloadURL } from 'firebase/storage';
-import { storage, firebase } from '../utilities/firebase.js';
+import { storage, firebase, storageRef } from '../utilities/firebase.js';
 
 
-const itemData = [{
-  img: kurimu
-},
-{
-  img: tamale
-},
-{
-  img: bakery
-}];
+// const itemData = [{
+//   img: kurimu
+// },
+// {
+//   img: tamale
+// },
+// {
+//   img: bakery
+// }];
+
+const itemData = [];
 
 function ResultIcon({ result_name }) {
   return (
     <div class="result_div">
-      <img src={"category_icons/" + result_name + ".svg"} class="result_icon" alt='None'/>
+      <img src={"category_icons/" + result_name + ".svg"} class="result_icon" alt='None' />
       <h3 class="result_description"> {result_name + " blurb"} </h3>
     </div>
   )
@@ -35,20 +37,39 @@ function ResultIcon({ result_name }) {
 
 export default function Result() {
   const queryParams = new URLSearchParams(window.location.search);
-  const results = queryParams.get('resultCat').split(","); 
-  var storageRef = firebase.storage().ref("");
+  const results = queryParams.get('resultCat').split(",");
 
-  storageRef.listAll().then(function(result) {
-    // result.items.forEach(function(imageRef) {
-    //   // And finally display them
-    //   console.log()
-    // });
-    console.log(result);
-  }).catch(function(error) {
-    // Handle any errors
-  });
+  const listRef = ref(storage);
+  const postResult = [[results[0]], [results[0], results[2]], [results[1], results[3]]]
 
-  
+  postResult.forEach(suggestion => {
+    listAll(listRef)
+      .then((res) => {
+        res.items.forEach((itemRef) => {
+          var flag = true
+          suggestion.forEach(cat => {
+            if (!itemRef._location.path.includes(cat)) {
+              flag = false
+            }
+          })
+          if(flag === true){
+            itemData.push({img: getDownloadURL(itemRef)})
+          }
+          // All the items under listRef.
+        });
+      }).catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+  }
+  )
+
+  console.log("itemData", itemData)
+
+
+
+
+
+
   console.log("results", results)
   return (
     <div class="results">
