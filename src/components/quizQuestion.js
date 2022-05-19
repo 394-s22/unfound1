@@ -18,11 +18,10 @@ const myTheme = createTheme({
           root: {
             color: "black",
             margin: "5px 15px 0 0",
-            width: "100%",
+            minWidth: "100%",
             borderStyle: "none",
             border: "1px solid !important",
             borderRadius: "13px!important",
-            // alignItems: "center",
             "&.Mui-selected": {
               backgroundColor: "#D6DBF5",
               borderStyle: "none!important"
@@ -42,7 +41,6 @@ const myTheme = createTheme({
 
 function QuizQuestion ({question, index, value, setValue}) {
     return(
-        <Card sx={{backgroundColor:"transparent"}}>
         <Box sx={{display: "flex", flexDirection:"column", alignItems:"center", textAlign:"center"}}>
         <CardContent >
         <Typography gutterBottom variant="h5" component="div" >
@@ -53,7 +51,7 @@ function QuizQuestion ({question, index, value, setValue}) {
         }
         </CardContent>
         </Box>
-        </Card>
+      
         
     )
 }
@@ -65,14 +63,6 @@ function QuizAnswer (answers, index, value, setValue) {
         setValue(event.target.value);
         createAnswerMatrix(index, event.target.value);
     };
-    
-    
-
-      /**
-       * Handle undefined value
-       *    If user forgets to answer a question, prompt user to answer said question (alert)
-       * 
-       * */
       
 
     return(

@@ -1,6 +1,6 @@
 import '../App.css';
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
 import { getAnswerMatrix } from '../components/quizQuestion';
 
@@ -108,10 +108,12 @@ export default function Question() {
   //   console.log("answerMatrix2");
 
   return (
-    <div className='centered' >
-      <h1> Personality Quiz: </h1>
+    <div  className='quizQuestions'>
+      <Typography variant='h3' sx={{color:"black"}}>
+         Quiz Questions
+       </Typography>
       <QuizQuestionList quiz={quiz} />
-      {/* <Button onClick = {getSuggestions}>Finish the quiz</Button> */}
+
     </div>
   );
 }
