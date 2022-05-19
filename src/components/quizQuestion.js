@@ -29,6 +29,7 @@ const myTheme = createTheme({
             borderStyle: "none",
             border: "1px solid !important",
             borderRadius: "13px!important",
+            padding:3,
             "&.Mui-selected": {
               backgroundColor: "#D6DBF5",
               borderStyle: "none!important"
@@ -83,7 +84,8 @@ function QuizAnswer (answers, index, value, setValue) {
             id = {index}
         >
             {
-                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />} label={ans['question']} 
+                Object.values(answers).map((ans) => <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />} 
+                label={<Typography variant="h6"> {ans['question']} </Typography>} 
                 sx={{
                     color: 'success'
                 }}/> )
