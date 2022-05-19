@@ -10,7 +10,14 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from '@mui/material/Box';
 
 
+
 const myTheme = createTheme({
+    typography: {
+        fontFamily: [
+          'IBM Plex Mono',
+          'Cosmic Octo Heavy'
+        ].join(','),
+      },
     // style radio button as button element
     components: {
       MuiFormControlLabel: {

@@ -3,6 +3,16 @@ import React from 'react';
 import { Button, Typography } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
 import { getAnswerMatrix } from '../components/quizQuestion';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const myTheme = createTheme({
+  typography: {
+      fontFamily: [
+        'IBM Plex Mono',
+        'Cosmic Octo Heavy'
+      ].join(','),
+    },
+});
 
 
 const categories = ['coffee', 'food', 'drinks', 'night', 'active', 'nature', 'history', 'music', 'shopping', 'art']
@@ -109,10 +119,13 @@ export default function Question() {
 
   return (
     <div  className='quizQuestions'>
-      <Typography variant='h3' sx={{color:"black"}}>
+      <ThemeProvider theme={myTheme}>
+
+      <Typography variant='h3' sx={{color:"black", padding:5, font:"IBM Plex Mono Light"}}>
          Quiz Questions
        </Typography>
       <QuizQuestionList quiz={quiz} />
+      </ThemeProvider>
 
     </div>
   );
