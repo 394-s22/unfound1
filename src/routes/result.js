@@ -10,18 +10,6 @@ import { ref, listAll, getDownloadURL } from 'firebase/storage';
 import { storage, firebase, storageRef } from '../utilities/firebase.js';
 
 
-// const itemData = [{
-//   img: kurimu
-// },
-// {
-//   img: tamale
-// },
-// {
-//   img: bakery
-// }];
-
-var itemData = ["", "", ""];
-
 function ResultIcon({ result_name }) {
   return (
     <div class="result_div">
@@ -51,44 +39,42 @@ export default function Result() {
           if (suggestion.length === 1) {
             if (itemRef._location.path === suggestion[0] + ".png") {
               getDownloadURL(itemRef).then((url) => {
-                // itemData.push(url)
-                // itemData[index] = url
-                // setUrls([...urls, { url: url }]);
-                if(urls.indexOf(url) == -1){
-                  // setUrls([...urls, url]);
-                  // const test = urls.push(url)
-                  const newArray = urls.concat([url])
-                  setUrls(newArray);
+                if(urls.includes(url) == false){
+                  setUrls(arr => [...arr, url]);
                 }
               })
             }
           } else {
             var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
             if (isEvery) {
-              console.log(suggestion);
+              // console.log(suggestion);
               // console.log(itemRef._location.path);
               getDownloadURL(itemRef).then((url) => {
-                // itemData.push(url)
-                // itemData[index] = url
-                // setUrls([...urls, { img: url }]);
-                if(urls.indexOf(url) == -1){
-                  const newArray = urls.concat([url])
-                  setUrls(newArray);
+                if(urls.includes(url) == false){
+                  setUrls(arr => [...arr, url]);
                 }
               })
             }
           }
-          // console.log(itemData);
-
         });
+        // console.log(itemData);
+        
       }).catch((error) => {
         // Uh-oh, an error occurred!
+        console.log("error")
       });
-  }
-  )
+      
+  })
 
-  console.log(urls)
+  // setUrls(itemData);
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+  var unique = urls.filter(onlyUnique);
+
+  console.log(unique)
   console.log("results", results)
+
   return (
     <div class="results">
       <h1>Results</h1>
@@ -111,8 +97,8 @@ export default function Result() {
           justifyContent="center"
         >
           <ImageList sx={{ width: '100%', height: 450, maxWidth: 500 }} cols={3} rowHeight={164}>
-            {urls.map((item) => (
-              <ImageListItem key={item}>
+            {unique.map((item) => (
+              <ImageListItem>
                 <img
                   src={`${item}?w=164&h=164&fit=crop&auto=format`}
                   srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
