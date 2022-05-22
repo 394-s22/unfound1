@@ -116,7 +116,7 @@ function createAnswerMatrix (index, category){
     catToIndex.set('night', 3);
     catToIndex.set('active', 4);
     catToIndex.set('nature', 5);
-    catToIndex.set('history', 6);
+    catToIndex.set('historical', 6);
     catToIndex.set('music', 7);
     catToIndex.set('shopping', 8);
     catToIndex.set('art', 9);

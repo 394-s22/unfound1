@@ -1,4 +1,4 @@
-export var categories = ['coffee', 'dining', 'alcohol', 'night', 'active', 'nature', 'history', 'music', 'shopping', 'art']
+export var categories = ['coffee', 'dining', 'alcohol', 'night', 'active', 'nature', 'historical', 'music', 'shopping', 'art']
 
 export var quiz = {
     "Choose a drink":
@@ -6,7 +6,7 @@ export var quiz = {
             { "question": "Oatmilk quartado", "category": "coffee" },
             { "question": "Blackberry fizz", "category": "alcohol" },
             { "question": "Green goodness juice", "category": "active" },
-            { "question": "Cinnamony Eggnog", "category": "history" },
+            { "question": "Cinnamony Eggnog", "category": "historical" },
         ],
     "The weather is immaculate this weekend. What do you plan to do?":
         [
@@ -41,13 +41,13 @@ export var quiz = {
             { "question": "Ruby. Pros: She looks nice and she might share some of the delicious cookies she packed. Con: You’ll still be hungry the entire ride.", "category": "dining" },
             { "question": "Alessandro. Pros: He’ll chat with you during the ride and give you at least 4 club recommendations for your destination. Con: This seat has no view outside.", "category": "night" },
             { "question": "Mira. Pros: She’ll tell you about all of her travel adventures & you can swap hiking recommendations. Cons: There’s less space to put your things.", "category": "active" },
-            { "question": "Alex. Pros: They’ll lend you one of their books to read during the ride. Cons: You won’t finish the book during the ride.", "category": "history" },
+            { "question": "Alex. Pros: They’ll lend you one of their books to read during the ride. Cons: You won’t finish the book during the ride.", "category": "historical" },
         ],
     "You're at the library. Which book do you check out?":
         [
             { "question": "Julia Child's cookbook 'Mastering the Art of French Cooking'", "category": "dining" },
             { "question": "F Scott Fitzgerald's Swanky 'The Great Gatsby'", "category": "night" },
-            { "question": "Karl Marx's 'The Communist Manifesto'", "category": "history" },
+            { "question": "Karl Marx's 'The Communist Manifesto'", "category": "historical" },
             { "question": "You don't, you only like to read books you buy", "category": "shopping" },
         ],
     "You're stranded on an island and can choose only one of these to bring with you, which one do you choose?":
@@ -68,7 +68,7 @@ export var quiz = {
         [
             { "question": "Buy a beer at chill at the local dive bar", "category": "alcohol" },
             { "question": "Buy some bread to feed the ducks at the nearby pond", "category": "nature" },
-            { "question": "Buy a ticket to your local architecture museum", "category": "history" },
+            { "question": "Buy a ticket to your local architecture museum", "category": "historical" },
             { "question": "Buy a cool-looking postcard from a street vendor", "category": "art" },
         ],
 }
