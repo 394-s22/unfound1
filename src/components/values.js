@@ -1,10 +1,10 @@
-export var categories = ['coffee', 'food', 'drinks', 'night', 'active', 'nature', 'history', 'music', 'shopping', 'art']
+export var categories = ['coffee', 'dining', 'alcohol', 'night', 'active', 'nature', 'history', 'music', 'shopping', 'art']
 
 export var quiz = {
     "Choose a drink":
         [
             { "question": "Oatmilk quartado", "category": "coffee" },
-            { "question": "Blackberry fizz", "category": "drinks" },
+            { "question": "Blackberry fizz", "category": "alcohol" },
             { "question": "Green goodness juice", "category": "active" },
             { "question": "Cinnamony Eggnog", "category": "history" },
         ],
@@ -18,13 +18,13 @@ export var quiz = {
     "If you were to quit your job right now, what would you do?":
         [
             { "question": "Open your own bookstore cafe in your neighborhood.", "category": "coffee" },
-            { "question": "Start an ASMR cooking channel.", "category": "food" },
+            { "question": "Start an ASMR cooking channel.", "category": "dining" },
             { "question": "Build a cozy, little hideout in the woods.", "category": "nature" },
             { "question": "Check out the entirety of your online shopping carts with your last paycheck.", "category": "shopping" },
         ],
     "Your best friend is visiting from out of town. What do you guys plan to do first?":
         [
-            { "question": "Visit a rooftop bar overlooking the city for small bites and drinks.", "category": "drinks" },
+            { "question": "Visit a rooftop bar overlooking the city for small bites and drinks.", "category": "alcohol" },
             { "question": "Grab some take-out and hit a drive-in theater.", "category": "night" },
             { "question": "Buy a day pass at your local bouldering spot.", "category": "active" },
             { "question": "Hit up your favorite venue for open mic night.", "category": "music" },
@@ -38,14 +38,14 @@ export var quiz = {
         ],
     "You’re taking a long night train ride, and there’s only 4 open seats. Who do you sit next to?":
         [
-            { "question": "Ruby. Pros: She looks nice and she might share some of the delicious cookies she packed. Con: You’ll still be hungry the entire ride.", "category": "food" },
+            { "question": "Ruby. Pros: She looks nice and she might share some of the delicious cookies she packed. Con: You’ll still be hungry the entire ride.", "category": "dining" },
             { "question": "Alessandro. Pros: He’ll chat with you during the ride and give you at least 4 club recommendations for your destination. Con: This seat has no view outside.", "category": "night" },
             { "question": "Mira. Pros: She’ll tell you about all of her travel adventures & you can swap hiking recommendations. Cons: There’s less space to put your things.", "category": "active" },
             { "question": "Alex. Pros: They’ll lend you one of their books to read during the ride. Cons: You won’t finish the book during the ride.", "category": "history" },
         ],
     "You're at the library. Which book do you check out?":
         [
-            { "question": "Julia Child's cookbook 'Mastering the Art of French Cooking'", "category": "food" },
+            { "question": "Julia Child's cookbook 'Mastering the Art of French Cooking'", "category": "dining" },
             { "question": "F Scott Fitzgerald's Swanky 'The Great Gatsby'", "category": "night" },
             { "question": "Karl Marx's 'The Communist Manifesto'", "category": "history" },
             { "question": "You don't, you only like to read books you buy", "category": "shopping" },
@@ -59,14 +59,14 @@ export var quiz = {
         ],
     "Your friend is hosting a dinner party. You bring:":
         [
-            { "question": "A fresh apple pie from your favorite bakery", "category": "food" },
-            { "question": "An interesting bottle of red wine", "category": "drinks" },
+            { "question": "A fresh apple pie from your favorite bakery", "category": "dining" },
+            { "question": "An interesting bottle of red wine", "category": "alcohol" },
             { "question": "A bouquet of peonies", "category": "shopping" },
             { "question": "A record of one of Maria Callas's opera performances", "category": "music" },
         ],
     "You only have $5 in your pocket. How do you spend it?":
         [
-            { "question": "Buy a beer at chill at the local dive bar", "category": "drinks" },
+            { "question": "Buy a beer at chill at the local dive bar", "category": "alcohol" },
             { "question": "Buy some bread to feed the ducks at the nearby pond", "category": "nature" },
             { "question": "Buy a ticket to your local architecture museum", "category": "history" },
             { "question": "Buy a cool-looking postcard from a street vendor", "category": "art" },
