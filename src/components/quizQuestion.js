@@ -52,7 +52,7 @@ function QuizQuestion({ question, index, value, setValue }) {
         <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
             <CardContent >
                 <Typography gutterBottom variant="h4" component="div" >
-                    <div><img style={{ position: "relative", width: '500px', height: 'auto' }} src='img_assets/2.svg'></img><p style={{ position: 'absolute', top: '300px', left: '43vw', width: '20vw', }}>{question[0]}</p></div>
+                    <div><img style={{ position: "relative", width: '500px', height: 'auto' }} src='img_assets/2.svg'></img><p style={{ position: 'absolute', top: '300px', left: '43vw', width: '20vw', }}>{index}<br></br>{question[0]}</p></div>
                 </Typography>
                 {
                     QuizAnswer(question[1], index, value, setValue)
@@ -93,6 +93,7 @@ function QuizAnswer(answers, index, value, setValue) {
                                     width: '20vw',
                                     height: '10vh',
                                     marginTop: '5vh',
+                                    borderColor: '#F74700 !important'
                                 }} />
                             <img class="question_image" src={(question_index % 2 == 0) ? "img_assets/blank.svg" : "img_assets/" + (7 + (4 * index) + question_index).toString() + ".svg"}></img>
                         </div>)
