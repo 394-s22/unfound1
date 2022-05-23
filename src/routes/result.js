@@ -60,7 +60,13 @@ export default function Result() {
   var finalposts = []
   for (var i = 0; i < 3; i++) {
     const len = qualified_posts[i].length
-    finalposts[i] = qualified_posts[i][Math.floor(Math.random() * len)]
+    const random_post = Math.floor(Math.random() * len)
+    // avoid duplicates
+    if (finalposts.includes(qualified_posts[i][random_post])) {
+      finalposts[i] = qualified_posts[i][(random_post + 1) % len]
+    } else {
+      finalposts[i] = qualified_posts[i][random_post]
+    }
   }
 
   return (
