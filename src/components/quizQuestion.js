@@ -119,12 +119,12 @@ function createAnswerMatrix(index, category) {
     const newArray = Array(10).fill(0);
 
     catToIndex.set('coffee', 0);
-    catToIndex.set('food', 1);
-    catToIndex.set('drinks', 2);
+    catToIndex.set('dining', 1);
+    catToIndex.set('alcohol', 2);
     catToIndex.set('night', 3);
     catToIndex.set('active', 4);
     catToIndex.set('nature', 5);
-    catToIndex.set('history', 6);
+    catToIndex.set('historical', 6);
     catToIndex.set('music', 7);
     catToIndex.set('shopping', 8);
     catToIndex.set('art', 9);
