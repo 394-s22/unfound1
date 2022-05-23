@@ -12,6 +12,32 @@
   height: auto;
 }
 
+.question_image {
+  width: 150px;
+  height: auto;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+#hide {
+  display: inline-block;
+}
+
+#show {
+  display: inline-block;
+}
+
+.question_header_div {}
+
+.question_bubble {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  display: none;
+}
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
