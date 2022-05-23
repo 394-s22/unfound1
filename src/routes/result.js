@@ -31,48 +31,43 @@ export default function Result() {
   const postResult = [[results[0]], [results[0], results[2]], [results[1], results[3]]];
   const [urls, setUrls] = useState([]);
 
-
-  postResult.forEach((suggestion, index) => {
+  postResult.forEach((suggestion) => {
+    var ranArr = [];
     listAll(listRef)
       .then((res) => {
         res.items.forEach((itemRef) => {
-          if (suggestion.length === 1) {
-            if (itemRef._location.path === suggestion[0] + ".png") {
-              getDownloadURL(itemRef).then((url) => {
-                if(urls.includes(url) == false){
-                  setUrls(arr => [...arr, url]);
-                }
-              })
-            }
-          } else {
-            var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
-            if (isEvery) {
-              // console.log(suggestion);
-              // console.log(itemRef._location.path);
-              getDownloadURL(itemRef).then((url) => {
-                if(urls.includes(url) == false){
-                  setUrls(arr => [...arr, url]);
-                }
-              })
-            }
+          var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
+          if (isEvery) {
+            ranArr.push(itemRef)
           }
         });
-        // console.log(itemData);
-        
+        getURL(ranArr[Math.floor(Math.random()*ranArr.length)]);        
       }).catch((error) => {
         // Uh-oh, an error occurred!
-        console.log("error")
+        console.log(error)
       });
       
   })
 
+  // console.log(refArr);
+  const getURL = function(ref){
+    getDownloadURL(ref).then((url) => {
+      if(urls.includes(url) == false){
+        setUrls(arr => [...arr, url]);
+      }
+    })
+  }
+
+  
   // setUrls(itemData);
   function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
   }
   var unique = urls.filter(onlyUnique);
+  var slice = unique.slice(0, 3);
 
-  console.log(unique)
+  // console.log(slice)
+  // console.log(unique)
   console.log("results", results)
 
   return (
@@ -97,7 +92,7 @@ export default function Result() {
           justifyContent="center"
         >
           <ImageList sx={{ width: '100%', height: 450, maxWidth: 500 }} cols={3} rowHeight={164}>
-            {unique.map((item) => (
+            {slice.map((item) => (
               <ImageListItem>
                 <img
                   src={`${item}?w=164&h=164&fit=crop&auto=format`}
