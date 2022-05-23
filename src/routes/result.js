@@ -1,13 +1,9 @@
 import '../App.css';
-import React, {useState} from 'react';
-import kurimu from '../kurimu.png';
-import tamale from '../eveliasTamales.png';
-import bakery from '../lostLarsonBakery.png';
+import React, { useState } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Grid from '@mui/material/Grid';
-import { ref, listAll, getDownloadURL } from 'firebase/storage';
-import { storage, firebase, storageRef } from '../utilities/firebase.js';
+import { useData } from '../utilities/firebase.js';
 
 
 function ResultIcon({ result_name }) {
@@ -21,54 +17,51 @@ function ResultIcon({ result_name }) {
 
 /* calculate the results here, store the four results in array of categories */
 
-// var results = ['coffee', 'shopping', 'night', 'dining']
 
 export default function Result() {
   const queryParams = new URLSearchParams(window.location.search);
   const results = queryParams.get('resultCat').split(",");
 
-  const listRef = ref(storage);
+  // This part of code is for pushing posts and their urls to the firebase
+  /* const listRef = ref(storage);
+  listAll(listRef)
+  .then((res) => {
+    res.items.forEach((itemRef) => {
+      getDownloadURL(itemRef).then((url) => {
+          pushData(`/users/`, {
+            filename: itemRef._location.path,
+            url: url
+          });
+      })
+
+    });
+  }).catch((error) => {
+    console.log(error)
+  }); */
+
   const postResult = [[results[0]], [results[0], results[2]], [results[1], results[3]]];
-  const [urls, setUrls] = useState([]);
+  const [picInfo, loading, error] = useData('/');
 
-  postResult.forEach((suggestion) => {
-    var ranArr = [];
-    listAll(listRef)
-      .then((res) => {
-        res.items.forEach((itemRef) => {
-          var isEvery = suggestion.every(item => itemRef._location.path.includes(item));
-          if (isEvery) {
-            ranArr.push(itemRef)
-          }
-        });
-        getURL(ranArr[Math.floor(Math.random()*ranArr.length)]);        
-      }).catch((error) => {
-        // Uh-oh, an error occurred!
-        console.log(error)
-      });
-      
-  })
+  if (error) return <h1>{error}</h1>;
+  if (loading) return <h1>Loading...</h1>
 
-  // console.log(refArr);
-  const getURL = function(ref){
-    getDownloadURL(ref).then((url) => {
-      if(urls.includes(url) == false){
-        setUrls(arr => [...arr, url]);
+  // retrieve all posts that contain vibes of each suggestion
+  var qualified_posts = [[], [], []]
+  for (var i = 0; i < 3; i++) {
+    for (const [key, value] of Object.entries(picInfo)) {
+      var isEvery = postResult[i].every(item => value.filename.includes(item));
+      if (isEvery) {
+        qualified_posts[i].push(value.url)
       }
-    })
+    }
   }
 
-  
-  // setUrls(itemData);
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
+  // randomly pick up one post
+  var finalposts = []
+  for (var i = 0; i < 3; i++) {
+    const len = qualified_posts[i].length
+    finalposts[i] = qualified_posts[i][Math.floor(Math.random() * len)]
   }
-  var unique = urls.filter(onlyUnique);
-  var slice = unique.slice(0, 3);
-
-  // console.log(slice)
-  // console.log(unique)
-  console.log("results", results)
 
   return (
     <div class="results">
@@ -92,7 +85,7 @@ export default function Result() {
           justifyContent="center"
         >
           <ImageList sx={{ width: '100%', height: 450, maxWidth: 500 }} cols={3} rowHeight={164}>
-            {slice.map((item) => (
+            {finalposts.map((item) => (
               <ImageListItem>
                 <img
                   src={`${item}?w=164&h=164&fit=crop&auto=format`}
