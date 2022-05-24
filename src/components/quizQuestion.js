@@ -52,7 +52,7 @@ function QuizQuestion({ question, index, value, setValue }) {
         <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
             <CardContent >
                 <Typography gutterBottom variant="h4" component="div" >
-                    <div><img style={{ position: "relative", width: '500px', height: 'auto' }} src='img_assets/2.svg'></img><p style={{ position: 'absolute', top: '300px', left: '43vw', width: '20vw', }}>{index}<br></br>{question[0]}</p></div>
+                    <div><img style={{ position: "relative", width: '500px', height: 'auto' }} src={'question_graphics/' + (index + 1).toString() + '.png'}></img></div>
                 </Typography>
                 {
                     QuizAnswer(question[1], index, value, setValue)
