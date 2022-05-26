@@ -4,13 +4,26 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Grid from '@mui/material/Grid';
 import { useData } from '../utilities/firebase.js';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Typography } from '@mui/material';
+
+
+
+const myTheme = createTheme({
+  typography: {
+      fontFamily: [
+          'IBM Plex Mono',
+          'Cosmic Octo Heavy'
+      ].join(','),
+  }
+});
 
 
 function ResultIcon({ result_name }) {
   return (
     <div class="result_div">
       <img src={"category_icons/" + result_name + ".svg"} class="result_icon" alt='None' />
-      <h3 class="result_description"> {result_name + " blurb"} </h3>
+      <Typography variant='h4' class="result_description"> {result_name + " blurb"} </Typography>
     </div>
   )
 }
@@ -70,9 +83,10 @@ export default function Result() {
   }
 
   return (
+    <ThemeProvider theme={myTheme}>
     <div class="results">
-      <h1>Results</h1>
-      <h2>Max, you are an introvert! </h2>
+      <Typography variant='h1'> Results </Typography>
+      <Typography variant='h3'>Max, you are an introvert! </Typography>
       <div class="results-icons">
 
         {
@@ -82,7 +96,7 @@ export default function Result() {
       </div>
 
       <div>
-        <h1> Unfound recomendations for Max: </h1>
+        <Typography variant='h3'> Unfound recomendations for Max: </Typography>
         <Grid
           container
           spacing={0}
@@ -106,5 +120,6 @@ export default function Result() {
       </div>
 
     </div>
+    </ThemeProvider>
   );
 }
