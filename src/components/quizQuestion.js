@@ -163,8 +163,17 @@ function QuizQuestionList({ quiz }) {
                 <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index={currentQuestionIndex} value={value} setValue={setValue} />
             }
             <Button onClick={handleChange}> Next</Button>
-        </Stack>
+            <br>
+        </br>
+        <br>
+        </br>
+        <br>
+        </br>
 
+
+
+        </Stack>
+        
     )
 }
 
