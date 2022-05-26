@@ -44,7 +44,7 @@ export default function Question() {
       <ThemeProvider theme={myTheme}>
 
       <Typography variant='h3' sx={{color:"black", padding:5, }}>
-         Quiz Questions
+          Quiz Questions
        </Typography>
       <QuizQuestionList quiz={quiz} />
       </ThemeProvider>
