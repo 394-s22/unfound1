@@ -52,7 +52,7 @@ function QuizQuestion({ question, index, value, setValue }) {
     return (
         <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center",  }}>
             
-                    <div><img style={{  width: '500px', height: 'auto' }} src={'question_graphics/' + (index + 1).toString() + '.png'}></img></div>
+                    <div class="choseimg"><img src={'question_graphics/' + (index + 1).toString() + '.png'}></img></div>
                 
                 {
                     QuizAnswer(question[1], index, value, setValue)

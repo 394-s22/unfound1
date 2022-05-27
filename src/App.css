@@ -44,6 +44,8 @@
   }
 }
 
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -87,4 +89,28 @@
 .quizQuestions {
   
   text-align: center;
+}
+
+.choseimg img{
+  width: 500px;
+  height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .centered h3{
+    padding-left: 15%;
+  }
+
+  .choseimg img{
+    width: 250px;
+    height: auto;
+  }
+
+  .quizQuestions h3{
+    padding-left: 15%;
+  }
+
+  .quizQuestions h6{
+    font-size: 15px;
+  }
 }
