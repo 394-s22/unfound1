@@ -1,7 +1,7 @@
 import './App.css';
 import { Button, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import landingImg from './landing.svg'
 
 
 const myTheme = createTheme({
@@ -19,7 +19,17 @@ function App() {
      <ThemeProvider theme={myTheme}>
     <div className="centered"> 
     <Typography variant="h3" gutterBottom> What type of Unfounder are you? </Typography>
-      <Button halfWidth variant="contained" color="primary" href="/question">Take the quiz</Button>
+    
+      <Button halfWidth variant="outlined"  href="/question" size="large"
+      sx={{
+        color: "gray",
+        width:"30%",
+        border: "2px solid !important",
+        borderRadius: "20px!important",
+      }}>
+        <Typography variant='h6'> Take the quiz </Typography>
+      </Button>
+
       </div>
       </ThemeProvider>
     </>
