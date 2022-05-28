@@ -18,7 +18,7 @@ function App() {
     <>
      <ThemeProvider theme={myTheme}>
     <div className="centered"> 
-    <Typography variant="h3" gutterBottom> What type of Unfounder are you? </Typography>
+    <Typography variant="h3" gutterBottom> What type of Unfounder are you? </Typography><br></br>
       <Button halfWidth variant="contained" color="primary" href="/question">Take the quiz</Button>
       </div>
       </ThemeProvider>
