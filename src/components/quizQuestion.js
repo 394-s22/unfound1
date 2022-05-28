@@ -9,6 +9,8 @@ import { Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { sizing } from '@mui/system';
+import { Padding } from "@mui/icons-material";
 
 
 
@@ -86,7 +88,7 @@ function QuizAnswer(answers, index, value, setValue) {
                 >
                     {
                         Object.values(answers).map((ans, question_index) => 
-                        <Box style={{ display: "flex",  alignItems: "space-around",  }}>
+                        <Box style={{ display: "flex",  alignItems: "space-around" }} sx={{ width: '100vw' }}>
                             <img class="question_image" src={(question_index % 2 == 0) ? "img_assets/" + (7 + (4 * index) + question_index).toString() + ".svg" : "img_assets/blank.svg"}></img>
                             <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />}
                                 label={<Typography variant="h6"> {ans['question']} </Typography>}
@@ -95,7 +97,8 @@ function QuizAnswer(answers, index, value, setValue) {
                                     width: '100%',
                                     // height: '10vh',
                                     marginTop: '5vh',
-                                    borderColor: '#F74700 !important'
+                                    borderColor: '#F74700 !important',
+                                    marginLeft: '1em'
                                 }} />
                             <img class="question_image" src={(question_index % 2 == 0) ? "img_assets/blank.svg" : "img_assets/" + (7 + (4 * index) + question_index).toString() + ".svg"}></img>
                         </Box>)

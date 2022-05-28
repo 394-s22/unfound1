@@ -96,6 +96,10 @@
   height: auto;
 }
 
+/* #demo-radio-buttons-group-label{
+  padding-left: ;
+} */
+
 @media only screen and (max-width: 600px) {
   .centered h3{
     font-size: 25px;
@@ -111,10 +115,18 @@
   }
 
   .quizQuestions h6{
-    font-size: 15px;
+    font-size: 18px;
+    padding-right: .5em;
+    padding-bottom: .5em;
+    padding-top: .5em;
+
+
+
   }
 
   .question_image{
-    width: 85px;
+    width: 60px;
   }
+
+  
 }
