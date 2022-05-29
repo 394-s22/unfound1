@@ -43,9 +43,7 @@ export default function Question() {
     <div  className='quizQuestions'>
       <ThemeProvider theme={myTheme}>
 
-      <Typography variant='h3' sx={{color:"black", padding:5, }}>
-          Quiz Questions
-       </Typography>
+      
       <QuizQuestionList quiz={quiz} />
       </ThemeProvider>
 
