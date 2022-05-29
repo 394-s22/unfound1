@@ -78,7 +78,7 @@ function QuizAnswer(answers, index, value, setValue) {
     return (
         <ThemeProvider theme={myTheme}>
 
-            <FormControl >
+            <FormControl sx={{ paddingBottom: 2 }}>
                 <RadioGroup
                     aria-labelledby="demo-controlled-radio-buttons-group"
                     name="controlled-radio-buttons-group"
@@ -163,12 +163,19 @@ function QuizQuestionList({ quiz }) {
 
     return (
 
-        <Box sx={{ display: "flex", flexDirection: "column", }}>
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", paddingBottom: 2 }}>
             {
                 <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index={currentQuestionIndex} value={value} setValue={setValue} />
             }
-            <Button style={{ paddingBottom: '50px', }} onClick={handleChange}> Next </Button>
-
+            <Button
+            halfWidth variant="outlined" size="large"
+            sx={{
+                width: "60%",
+                color: "gray",
+                border: "2px solid !important",
+                borderRadius: "20px!important",
+              }}
+            onClick={handleChange}> Next </Button>
         </Box>
 
     )
