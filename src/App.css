@@ -44,6 +44,8 @@
   }
 }
 
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -84,9 +86,55 @@
   align-items: center;
 }
 
+
+.quizQuestions {
+  
+  text-align: center;
+}
+
+.choseimg img{
+  width: 500px;
+  height: auto;
+}
+
+/* #demo-radio-buttons-group-label{
+  padding-left: ;
+} */
+
+@media only screen and (max-width: 600px) {
+  .centered h3{
+    font-size: 25px;
+  }
+
+  .choseimg img{
+    width: 250px;
+    height: auto;
+  }
+
+  .quizQuestions h3{
+    padding-left: 10%;
+  }
+
+  .quizQuestions h6{
+    font-size: 18px;
+    padding-right: .5em;
+    padding-bottom: .5em;
+    padding-top: .5em;
+
+
+
+  }
+
+  .question_image{
+    width: 60px;
+  }
+
+  
+
 .middleLanding{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }

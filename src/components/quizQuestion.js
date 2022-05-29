@@ -8,6 +8,9 @@ import { getSuggestions } from '../routes/question';
 import { Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { sizing } from '@mui/system';
+import { Padding } from "@mui/icons-material";
 
 
 
@@ -24,12 +27,12 @@ const myTheme = createTheme({
             styleOverrides: {
                 root: {
                     color: "black",
-                    margin: "5px 15px 0 0",
-                    minWidth: "100%",
+                    // margin: "5px 15px 0 0",
+                    // Width: "100%",
                     borderStyle: "none",
                     border: "1px solid !important",
                     borderRadius: "13px!important",
-                    padding: 3,
+                    // padding: 3,
                     "&.Mui-selected": {
                         backgroundColor: "#D6DBF5",
                         borderStyle: "none!important"
@@ -49,15 +52,14 @@ const myTheme = createTheme({
 
 function QuizQuestion({ question, index, value, setValue }) {
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-            <CardContent >
-                <Typography gutterBottom variant="h4" component="div" >
-                    <div><img style={{ position: "relative", width: '500px', height: 'auto' }} src={'question_graphics/' + (index + 1).toString() + '.png'}></img></div>
-                </Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center",  }}>
+            
+                    <div class="choseimg"><img src={'question_graphics/' + (index + 1).toString() + '.png'}></img></div>
+                
                 {
                     QuizAnswer(question[1], index, value, setValue)
                 }
-            </CardContent>
+            
         </Box>
 
 
@@ -75,6 +77,7 @@ function QuizAnswer(answers, index, value, setValue) {
 
     return (
         <ThemeProvider theme={myTheme}>
+             
             <FormControl >
                 <RadioGroup
                     aria-labelledby="demo-controlled-radio-buttons-group"
@@ -84,19 +87,21 @@ function QuizAnswer(answers, index, value, setValue) {
                     id={index}
                 >
                     {
-                        Object.values(answers).map((ans, question_index) => <div style={{ display: "flex", paddingRight: "30vw" }}>
+                        Object.values(answers).map((ans, question_index) => 
+                        <Box style={{ display: "flex",  alignItems: "space-around" }} sx={{ width: '100vw' }}>
                             <img class="question_image" src={(question_index % 2 == 0) ? "img_assets/" + (7 + (4 * index) + question_index).toString() + ".svg" : "img_assets/blank.svg"}></img>
                             <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />}
                                 label={<Typography variant="h6"> {ans['question']} </Typography>}
                                 sx={{
-                                    color: 'success',
-                                    width: '20vw',
-                                    height: '10vh',
+                                    display:"flex",
+                                    width: '100%',
+                                    // height: '10vh',
                                     marginTop: '5vh',
-                                    borderColor: '#F74700 !important'
+                                    borderColor: '#F74700 !important',
+                                    marginLeft: '1em'
                                 }} />
                             <img class="question_image" src={(question_index % 2 == 0) ? "img_assets/blank.svg" : "img_assets/" + (7 + (4 * index) + question_index).toString() + ".svg"}></img>
-                        </div>)
+                        </Box>)
                     }
                 </RadioGroup>
             </FormControl>
@@ -158,21 +163,13 @@ function QuizQuestionList({ quiz }) {
 
     return (
 
-        <Stack spacing={2}>
+        <Box sx={{display:"flex", flexDirection:"column",}}>
             {
                 <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index={currentQuestionIndex} value={value} setValue={setValue} />
             }
-            <Button onClick={handleChange}> Next</Button>
-            <br>
-        </br>
-        <br>
-        </br>
-        <br>
-        </br>
+            <Button onClick={handleChange}> Next </Button>
 
-
-
-        </Stack>
+        </Box>
         
     )
 }

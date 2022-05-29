@@ -16,6 +16,8 @@ function App() {
     <>
      <ThemeProvider theme={myTheme}>
     <div className="centered"> 
+    <Typography variant="h3" gutterBottom> What type of Unfounder are you? </Typography><br></br>
+      <Button halfWidth variant="contained" color="primary" href="/question">Take the quiz</Button>
 
     <Grid container justifyContent="flex-start" wrap>
       <Box paddingLeft={4}>
