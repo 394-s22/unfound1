@@ -78,13 +78,14 @@
 }
 
 .centered {
-  height: 100vh;
+  /* minHeight: 100vh; */
   /* Magic here */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 
 .quizQuestions {
   
@@ -129,4 +130,11 @@
   }
 
   
+
+.middleLanding{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
