@@ -31,6 +31,7 @@ function App() {
     
       <Button halfWidth variant="outlined"  href="/question" size="large"
       sx={{
+        width: "50%",
         color: "gray",
         border: "2px solid !important",
         borderRadius: "20px!important",
