@@ -70,6 +70,12 @@ function QuizAnswer(answers, index, value, setValue) {
     // const [value, setValue] = useState();
     console.log('value', value)
     const handleChange = (event) => {
+        [...document.getElementsByClassName("MuiFormControlLabel-root")].forEach(
+            (element) => {
+                element.style.backgroundColor = "transparent";
+            }
+        );
+        event.target.parentElement.parentElement.style.backgroundColor = "antiquewhite";
         setValue(event.target.value);
         createAnswerMatrix(index, event.target.value);
     };
@@ -91,7 +97,16 @@ function QuizAnswer(answers, index, value, setValue) {
                             <Box style={{ display: "flex", alignItems: "space-around" }} sx={{ width: '100vw' }}>
                                 <img class="question_image" src={(question_index % 2 == 0) ? "img_assets/" + (7 + (4 * index) + question_index).toString() + ".svg" : "img_assets/blank.svg"}></img>
                                 <FormControlLabel id="demo-radio-buttons-group-label" value={ans['category']} control={<Radio />}
-                                    label={<Typography variant="h6"> {ans['question']} </Typography>}
+                                    label={
+                                        <Box
+                                        display="flex"
+                                        justifyContent="space-between"
+                                        alignItems="center"
+                                        >
+                                        <div class="option">{ans['option']}</div>
+                                        <Typography variant="h6"> {ans['question']} </Typography>
+                                        </Box>
+                                    }
                                     sx={{
                                         display: "flex",
                                         width: '100%',
@@ -146,9 +161,14 @@ function QuizQuestionList({ quiz }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [value, setValue] = useState();
     console.log("currentQuestionIndex", currentQuestionIndex)
-
+    
     const handleChange = () => {
-        setValue()
+        setValue();
+        [...document.getElementsByClassName("MuiFormControlLabel-root")].forEach(
+            (element) => {
+                element.style.backgroundColor = "transparent";
+            }
+        );
 
         if (answerMatrix[currentQuestionIndex].includes(1) === false) {
             return alert("Please select an answer to move on!!!");

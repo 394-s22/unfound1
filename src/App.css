@@ -164,3 +164,27 @@
 
 
 }
+
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root{
+  display: none !important;
+}
+
+.MuiFormControlLabel-root{
+  justify-content: center;
+}
+
+.css-o38vrs-MuiFormControlLabel-root:hover {
+  background-color: antiquewhite !important;
+}
+
+.option{
+  margin-right: 30px;
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .option{
+    margin-right: 10px;
+  }
+}
