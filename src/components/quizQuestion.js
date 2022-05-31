@@ -171,7 +171,7 @@ function QuizQuestionList({ quiz }) {
             halfWidth variant="outlined" size="large"
             sx={{
                 width: "60%",
-                color: "gray",
+                color: "black",
                 border: "2px solid !important",
                 borderRadius: "20px!important",
               }}

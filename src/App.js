@@ -22,20 +22,20 @@ function App() {
 
           <Grid container justifyContent="flex-start" wrap>
             <Box paddingLeft={4}>
-              <Typography variant='h2' sx={{ color: "gray" }}> The </Typography>
-              <Typography variant='h2' sx={{ color: "gray" }}>  Unfounder </Typography>
-              <Typography variant='h2' sx={{ color: "gray" }}>  Sorter</Typography>
+              <Typography variant='h2' sx={{ color: "black" }}> The </Typography>
+              <Typography variant='h2' sx={{ color: "black" }}>  Unfounder </Typography>
+              <Typography variant='h2' sx={{ color: "black" }}>  Sorter</Typography>
             </Box>
           </Grid >
           <div className='middleLanding'>
             <img style={{ width: '38%', height: 'auto' }} src={landingImg} alt="logo" />
 
-            <Typography variant="h3" gutterBottom sx={{ color: "gray" }}> What type of Unfounder are you? </Typography>
+            <Typography variant="h3" gutterBottom sx={{ color: "black" }}> What type of Unfounder are you? </Typography>
 
             <Button halfWidth variant="outlined" href="/question" size="large"
               sx={{
                 width: "50%",
-                color: "gray",
+                color: "black",
                 border: "2px solid !important",
                 borderRadius: "20px!important",
               }}>

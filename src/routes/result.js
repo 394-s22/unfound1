@@ -85,8 +85,9 @@ export default function Result() {
   return (
     <ThemeProvider theme={myTheme}>
     <div class="results">
-      <Typography variant='h1'> Results </Typography>
-      <Typography variant='h3'>Max, you are an introvert! </Typography>
+      <Typography variant='h2'> Results </Typography>
+      <Typography variant='h4'>Max, you are an introvert! </Typography>
+      <br></br>
       <div class="results-icons">
 
         {
@@ -96,7 +97,7 @@ export default function Result() {
       </div>
 
       <div>
-        <Typography variant='h3'> Unfound recomendations for Max: </Typography>
+        <Typography variant='h4'> Unfound recommendations for Max: </Typography>
         <Grid
           container
           spacing={0}
