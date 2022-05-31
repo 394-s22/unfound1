@@ -28,7 +28,7 @@ function App() {
             </Box>
           </Grid >
           <div className='middleLanding'>
-            <img style={{ width: '50%', height: 'auto' }} src={landingImg} alt="logo" />
+            <img style={{ width: '38%', height: 'auto' }} src={landingImg} alt="logo" />
 
             <Typography variant="h3" gutterBottom sx={{ color: "gray" }}> What type of Unfounder are you? </Typography>
 
