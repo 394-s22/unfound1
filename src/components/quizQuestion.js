@@ -67,8 +67,6 @@ function QuizQuestion({ question, index, value, setValue }) {
 }
 
 function QuizAnswer(answers, index, value, setValue) {
-    // const [value, setValue] = useState();
-    console.log('value', value)
     const handleChange = (event) => {
         setValue(event.target.value);
         createAnswerMatrix(index, event.target.value);
@@ -117,7 +115,6 @@ export function getAnswerMatrix() {
 }
 
 function createAnswerMatrix(index, category) {
-    console.log(index, category)
     // const category = 'night';
     const catToIndex = new Map();
     // const row = 0;
@@ -135,17 +132,14 @@ function createAnswerMatrix(index, category) {
     catToIndex.set('art', 9);
 
     newArray[catToIndex.get(category)] = 1;
-    console.log(catToIndex.get(category));
 
     answerMatrix[index] = newArray;
-    console.log(answerMatrix);
 }
 
 
 function QuizQuestionList({ quiz }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [value, setValue] = useState();
-    console.log("currentQuestionIndex", currentQuestionIndex)
 
     const handleChange = () => {
         setValue()
@@ -168,14 +162,14 @@ function QuizQuestionList({ quiz }) {
                 <QuizQuestion question={Object.entries(quiz)[currentQuestionIndex]} index={currentQuestionIndex} value={value} setValue={setValue} />
             }
             <Button
-            halfWidth variant="outlined" size="large"
-            sx={{
-                width: "60%",
-                color: "black",
-                border: "2px solid !important",
-                borderRadius: "20px!important",
-              }}
-            onClick={handleChange}> Next </Button>
+                halfWidth variant="outlined" size="large"
+                sx={{
+                    width: "60%",
+                    color: "black",
+                    border: "2px solid !important",
+                    borderRadius: "20px!important",
+                }}
+                onClick={handleChange}> Next </Button>
         </Box>
 
     )
