@@ -11,10 +11,10 @@ import { Typography } from '@mui/material';
 
 const myTheme = createTheme({
   typography: {
-      fontFamily: [
-          'IBM Plex Mono',
-          'Cosmic Octo Heavy'
-      ].join(','),
+    fontFamily: [
+      'IBM Plex Mono',
+      'Cosmic Octo Heavy'
+    ].join(','),
   }
 });
 
@@ -82,45 +82,54 @@ export default function Result() {
     }
   }
 
+  var personality_type = "introvert"
+  if (Math.floor(Math.random() * 2) == 1) {
+    personality_type = "extrovert"
+  }
+
+  var user_name = "Max"
+  // code for in the future if Unfound wants to incorporate getting the users'
+  // name or other information (better analytics/tracking)
+
   return (
     <ThemeProvider theme={myTheme}>
-    <div class="results">
-      <Typography variant='h2'> Results </Typography>
-      <Typography variant='h4'>Max, you are an introvert! </Typography>
-      <br></br>
-      <div class="results-icons">
+      <div class="results">
+        <Typography variant='h2'> Results </Typography>
+        <Typography variant='h4'>{user_name}, you are an {personality_type}! </Typography>
+        <br></br>
+        <div class="results-icons">
 
-        {
-          Object.values(results).map((result) => <ResultIcon result_name={result} />)
-        }
+          {
+            Object.values(results).map((result) => <ResultIcon result_name={result} />)
+          }
+
+        </div>
+
+        <div>
+          <Typography variant='h4'> Unfound recommendations for Max: </Typography>
+          <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <ImageList sx={{ width: '100%', height: 450, maxWidth: 500 }} cols={3} rowHeight={164}>
+              {finalposts.map((item) => (
+                <ImageListItem>
+                  <img
+                    src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                    srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList></Grid>
+
+        </div>
 
       </div>
-
-      <div>
-        <Typography variant='h4'> Unfound recommendations for Max: </Typography>
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <ImageList sx={{ width: '100%', height: 450, maxWidth: 500 }} cols={3} rowHeight={164}>
-            {finalposts.map((item) => (
-              <ImageListItem>
-                <img
-                  src={`${item}?w=164&h=164&fit=crop&auto=format`}
-                  srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item}
-                  loading="lazy"
-                />
-              </ImageListItem>
-            ))}
-          </ImageList></Grid>
-
-      </div>
-
-    </div>
     </ThemeProvider>
   );
 }
