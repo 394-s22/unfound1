@@ -27,8 +27,6 @@
   display: inline-block;
 }
 
-.question_header_div {}
-
 .question_bubble {
   position: absolute;
   width: 150px;
