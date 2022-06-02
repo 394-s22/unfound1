@@ -20,7 +20,6 @@ export function getSuggestions() {
 
   //Add up
   var colSum = userAnswers.reduce((a, b) => a.map((j, i) => j + b[i]));
-  console.log(colSum);
 
   //Make recomendations
   /* Sort colSum descendly and return an array of indices that 
