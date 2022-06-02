@@ -1,6 +1,5 @@
 import '../App.css';
 import React from 'react';
-import { Typography } from '@mui/material';
 import QuizQuestionList from '../components/quizQuestion';
 import { getAnswerMatrix } from '../components/quizQuestion';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -14,12 +13,6 @@ const myTheme = createTheme({
     ].join(','),
   },
 });
-
-function printSuggestionsDebug() {
-  var userAnswers = getAnswerMatrix();
-  console.log("debugging userAnswers:", userAnswers);
-}
-
 
 export function getSuggestions() {
   var userAnswers = getAnswerMatrix();
