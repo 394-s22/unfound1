@@ -8,7 +8,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Typography } from '@mui/material';
 
 
-
 const myTheme = createTheme({
   typography: {
     fontFamily: [
@@ -29,7 +28,6 @@ function ResultIcon({ result_name }) {
 }
 
 /* calculate the results here, store the four results in array of categories */
-
 
 export default function Result() {
   const queryParams = new URLSearchParams(window.location.search);

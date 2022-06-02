@@ -40,8 +40,6 @@ export default function Question() {
   return (
     <div className='quizQuestions'>
       <ThemeProvider theme={myTheme}>
-
-
         <QuizQuestionList quiz={quiz} />
       </ThemeProvider>
 
