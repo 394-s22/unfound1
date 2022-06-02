@@ -8,17 +8,22 @@ import { categories, quiz } from '../components/values';
 
 const myTheme = createTheme({
   typography: {
-      fontFamily: [
-        'IBM Plex Mono',
-        'Cosmic Octo Heavy'
-      ].join(','),
-    },
+    fontFamily: [
+      'IBM Plex Mono',
+      'Cosmic Octo Heavy'
+    ].join(','),
+  },
 });
+
+function printSuggestionsDebug() {
+  var userAnswers = getAnswerMatrix();
+  console.log("debugging userAnswers:", userAnswers);
+}
 
 
 export function getSuggestions() {
   var userAnswers = getAnswerMatrix();
-  console.log("userAnswers", userAnswers);
+
 
   //Add up
   var colSum = userAnswers.reduce((a, b) => a.map((j, i) => j + b[i]));
@@ -40,11 +45,11 @@ export function getSuggestions() {
 
 export default function Question() {
   return (
-    <div  className='quizQuestions'>
+    <div className='quizQuestions'>
       <ThemeProvider theme={myTheme}>
 
-      
-      <QuizQuestionList quiz={quiz} />
+
+        <QuizQuestionList quiz={quiz} />
       </ThemeProvider>
 
     </div>
