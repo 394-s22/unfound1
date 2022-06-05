@@ -2,9 +2,27 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Firebase Configuration:
+
+No Firebase configuration/setup is currently needed to use the quiz functionality, but your tracking/analytics modules for the web app can be imported in App.js or in specific pages in /routes. 
+
+## Additional Modification:
+
+The questions/answers can be changed in /components/values.js
+Results processing/image-generation can be modified in /routes/result.js 
+The question graphics are hard coded and can be changed in /public/question_graphics, where x.png correlates to question #x
+
+## Known bugs:
+
+None
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs necessary modules (materialUI, etc.) for visual display. Unfound-specific graphics ship with the app in /public and the main directory. 
 
 ### `npm start`
 
